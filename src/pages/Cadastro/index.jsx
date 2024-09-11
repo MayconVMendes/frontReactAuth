@@ -1,14 +1,26 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import api from "../../services/api";
 
 function Cadastro() {
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log(nameRef);
+
+    try {
+      await api.post("/cadastro", {
+        name: nameRef.current.value,
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      });
+
+      alert("usuário Cadastrado com Sucesso");
+    } catch (error) {
+      alert("usuário não foi cadastrado", error);
+    }
   }
 
   return (
