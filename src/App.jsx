@@ -1,8 +1,13 @@
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import Cadastro from "./pages/Cadastro";
+
 function App() {
   return (
-    <>
-      <h1>Cadastro</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Cadastro />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
